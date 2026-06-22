@@ -307,8 +307,9 @@ export default function StackSection() {
   return (
     <>
       <section
+        id="skills"
         ref={sectionRef}
-        className="relative bg-white rounded-t-[40px] shadow-[0_-5px_20px_rgba(0,0,0,0.03)] -mt-4 z-40 pt-20 pb-32 font-sans"
+        className="relative bg-white rounded-t-[40px] shadow-[0_-5px_20px_rgba(0,0,0,0.03)] -mt-4 z-40 pt-20 pb-32 font-sans scroll-mt-28"
       >
         <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
 

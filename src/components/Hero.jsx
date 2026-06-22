@@ -47,13 +47,6 @@ export default function HeroSection() {
   const languages = Object.keys(config);
   const lang = useLang(languages);
   const containerRef = useRef(null);
-    
-  // Global Language Sync
-  useEffect(() => {
-    const handleLangChange = (e) => setLang(e.detail);
-    window.addEventListener("languageChange", handleLangChange);
-    return () => window.removeEventListener("languageChange", handleLangChange);
-  }, []);
 
   const t = config[lang].hero;
 
@@ -123,6 +116,11 @@ export default function HeroSection() {
     }
   };
 
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleStatHover = (e, isEnter) => {
     gsap.to(e.currentTarget, {
       y: isEnter ? -6 : 0,
@@ -139,8 +137,9 @@ export default function HeroSection() {
 
   return (
     <section
+      id="about"
       ref={containerRef}
-      className="relative min-h-screen bg-slate-50 pt-36 pb-20 px-6 md:px-12 lg:px-24 flex flex-col justify-center overflow-hidden font-sans"
+      className="relative min-h-screen bg-slate-50 pt-36 pb-20 px-6 md:px-12 lg:px-24 flex flex-col justify-center overflow-hidden font-sans scroll-mt-28"
     >
       {/* Background Soft Glow (matches light mode Nav theme) */}
       <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-300/30 blur-[120px] pointer-events-none" />
@@ -185,18 +184,20 @@ export default function HeroSection() {
             {/* Actions */}
             <div className="hero-element flex flex-wrap items-center gap-4 mt-4">
               <button
+                onClick={() => scrollToId("contact")}
                 onMouseEnter={(e) => handleButtonHover(e, true, true)}
                 onMouseLeave={(e) => handleButtonHover(e, false, true)}
-                className="flex items-center gap-2 px-8 py-3.5 bg-indigo-500 text-white font-medium rounded-full shadow-[0_10px_30px_-10px_rgba(99,102,241,0.4)]"
+                className="flex items-center gap-2 px-8 py-3.5 bg-indigo-500 text-white font-medium rounded-full shadow-[0_10px_30px_-10px_rgba(99,102,241,0.4)] cursor-pointer"
               >
                 <Sparkles size={16} />
                 {t.buttons.primary}
               </button>
               
               <button
+                onClick={() => scrollToId("work")}
                 onMouseEnter={(e) => handleButtonHover(e, true, false)}
                 onMouseLeave={(e) => handleButtonHover(e, false, false)}
-                className="flex items-center gap-2 px-8 py-3.5 border border-slate-300 text-slate-700 font-medium rounded-full transition-colors"
+                className="flex items-center gap-2 px-8 py-3.5 border border-slate-300 text-slate-700 font-medium rounded-full transition-colors cursor-pointer"
               >
                 {t.buttons.secondary}
               </button>

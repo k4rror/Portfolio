@@ -36,13 +36,6 @@ export default function ProjectsSection() {
   const containerRef = useRef(null);
   const desktopPanelsRef = useRef([]);
 
-  // Global Language Sync
-  useEffect(() => {
-    const handleLangChange = (e) => setLang(e.detail);
-    window.addEventListener("languageChange", handleLangChange);
-    return () => window.removeEventListener("languageChange", handleLangChange);
-  }, []);
-
   const t = config[lang].projects;
 
   // Responsive GSAP Animations using MatchMedia
@@ -171,8 +164,9 @@ export default function ProjectsSection() {
 
   return (
     <section
+      id="work"
       ref={containerRef}
-      className="relative bg-white rounded-t-[40px] shadow-[0_-5px_20px_rgba(0,0,0,0.03)] -mt-4 z-20 pt-16 md:pt-24 pb-20 md:pb-32 font-sans overflow-visible"
+      className="relative bg-white rounded-t-[40px] shadow-[0_-5px_20px_rgba(0,0,0,0.03)] -mt-4 z-20 pt-16 md:pt-24 pb-20 md:pb-32 font-sans overflow-visible scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24">
         
