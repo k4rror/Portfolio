@@ -5,6 +5,7 @@ import HeroSection from "./components/Hero";
 import ProjectsSection from "./components/Projects";
 import JourneySection from "./components/Journey";
 import StackSection from "./components/Stack";
+import ContactSection from "./components/Contact";
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
@@ -14,5 +15,6 @@ createRoot(document.getElementById('root')).render(
       <ProjectsSection/>
       <StackSection/>
       <JourneySection/>
+      <ContactSection/>
   </StrictMode>,
 )

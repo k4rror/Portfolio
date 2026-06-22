@@ -4,8 +4,8 @@
         "logo": "KMalina.",
         "links": [
           { "name": "Work", "href": "#work" },
-          { "name": "Services", "href": "#services" },
-          { "name": "About", "href": "#about" },
+          { "name": "Skills", "href": "#skills" },
+          { "name": "Journey", "href": "#journey" },
           { "name": "Contact", "href": "#contact" }
         ],
         "hireMe": "Hire Me"
@@ -185,6 +185,24 @@
             "tags": ["Cursor", "Claude Code", "Prompt Engineering"]
           }
         ]
+      },
+      "contact": {
+        "sectionLabel": "Get in Touch",
+        "title": "Let's build something great together",
+        "description": "I'm currently looking for my first professional role in the IT industry and I'm open to freelance projects. Have an idea or an opportunity? My inbox is always open.",
+        "availability": "Available for work",
+        "emailLabel": "Email me",
+        "email": "k44324061@gmail.com",
+        "socialsLabel": "Find me online",
+        "socials": [
+          { "name": "GitHub", "icon": "github", "href": "https://github.com/k4rror" }
+        ]
+      },
+      "footer": {
+        "tagline": "Junior Web Developer crafting modern, full-stack web experiences.",
+        "navLabel": "Navigation",
+        "rights": "All rights reserved.",
+        "builtWith": "Built with React, Vite & TailwindCSS"
       }
     },
     "pl": {
@@ -192,8 +210,8 @@
         "logo": "KMalina.",
         "links": [
           { "name": "Projekty", "href": "#work" },
-          { "name": "Usługi", "href": "#services" },
-          { "name": "O mnie", "href": "#about" },
+          { "name": "Umiejętności", "href": "#skills" },
+          { "name": "Moja Droga", "href": "#journey" },
           { "name": "Kontakt", "href": "#contact" }
         ],
         "hireMe": "Zatrudnij Mnie"
@@ -373,6 +391,24 @@
             "tags": ["Cursor", "Claude Code", "Prompt Engineering"]
           }
         ]
+      },
+      "contact": {
+        "sectionLabel": "Kontakt",
+        "title": "Zbudujmy razem coś wielkiego",
+        "description": "Obecnie szukam swojej pierwszej profesjonalnej roli w branży IT i jestem otwarty na projekty freelance. Masz pomysł lub propozycję? Moja skrzynka jest zawsze otwarta.",
+        "availability": "Dostępny do pracy",
+        "emailLabel": "Napisz do mnie",
+        "email": "k44324061@gmail.com",
+        "socialsLabel": "Znajdź mnie w sieci",
+        "socials": [
+          { "name": "GitHub", "icon": "github", "href": "https://github.com/k4rror" }
+        ]
+      },
+      "footer": {
+        "tagline": "Młodszy programista tworzący nowoczesne aplikacje full-stack.",
+        "navLabel": "Nawigacja",
+        "rights": "Wszelkie prawa zastrzeżone.",
+        "builtWith": "Stworzone z React, Vite i TailwindCSS"
       }
     }
   }

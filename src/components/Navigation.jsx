@@ -1,38 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Code2, ArrowUpRight, Sparkles, Globe, ChevronDown } from "lucide-react";
+import {
+  Code2,
+  ArrowUpRight,
+  Sparkles,
+  Globe,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
+import config from "./config.json";
 
 gsap.registerPlugin(useGSAP);
 
-// Dummy config to make component fully functional standalone
-const config = {
-  en: {
-    nav: {
-      logo: "Karol Malina",
-      links:[
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Skills", href: "#skills" },
-        { name: "My journey", href: "#journey" },
-      ],
-      hireMe: "Hire Me"
-    }
-  },
-  pl: {
-    nav: {
-      logo: "Karol Malina",
-      links:[
-        { name: "O mnie", href: "#about" },
-        { name: "Projekty", href: "#projects" },
-        { name: "Umiejętności", href: "#skills" },
-        { name: "Moja Droga", href: "#journey" },
-      ],
-      hireMe: "Zatrudnij"
-    }
-  }
-};
 const LANG_KEY = "portfolio_lang";
+
+const scrollToId = (href) => {
+  const el = document.querySelector(href);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
 
 function getInitialLang(languages) {
   const stored = localStorage.getItem(LANG_KEY);
@@ -45,6 +32,7 @@ export default function FloatingNav() {
   const [lang, setLang] = useState(() => getInitialLang(languages));
   const[isScrolled, setIsScrolled] = useState(false);
   const[isLangOpen, setIsLangOpen] = useState(false);
+  const[isMenuOpen, setIsMenuOpen] = useState(false);
 
   const containerRef = useRef(null);
   const starRef = useRef(null);
@@ -118,18 +106,17 @@ export default function FloatingNav() {
 
   // ── Language switch ────────────────────────────────────────────────────────
   const switchLanguage = (newLang) => {
-    if (newLang === lang) {
-      setIsLangOpen(false);
-      return;
-    }
-    localStorage.setItem(LANG_KEY, newLang);
-    gsap.to("body", {
-      opacity: 0,
-      duration: 0.2,
-      ease: "power2.in",
-      onComplete: () => window.location.reload(),
-    });
     setIsLangOpen(false);
+    if (newLang === lang) return;
+    localStorage.setItem(LANG_KEY, newLang);
+    setLang(newLang);
+    window.dispatchEvent(new CustomEvent("languageChange", { detail: newLang }));
+  };
+
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    scrollToId(href);
   };
 
   // ── Micro-interactions (Fixed with overwrite: true & contextSafe) ──────────
@@ -178,6 +165,19 @@ export default function FloatingNav() {
       ref={containerRef}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
     >
+      {/* Progressive-blur backdrop: masks page content scrolling under the bar */}
+      <div
+        aria-hidden="true"
+        className={`fixed top-0 left-0 right-0 h-28 transition-opacity duration-500 ${
+          isScrolled ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 45%, transparent)",
+          maskImage: "linear-gradient(to bottom, black 45%, transparent)",
+        }}
+      />
       <div
         className={`pointer-events-auto w-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isScrolled ? "max-w-4xl" : "max-w-7xl"
@@ -217,7 +217,8 @@ export default function FloatingNav() {
           >
             {/* Logo */}
             <a
-              href="/"
+              href="#about"
+              onClick={(e) => handleLinkClick(e, "#about")}
               className="nav-element flex items-center gap-2 group cursor-pointer px-2"
               onMouseEnter={(e) => handleLogoHover(e, true)}
               onMouseLeave={(e) => handleLogoHover(e, false)}
@@ -236,6 +237,7 @@ export default function FloatingNav() {
                 <li key={link.name} className="nav-element">
                   <a
                     href={link.href}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     className="font-sans font-medium text-slate-500 text-sm tracking-wide block px-5 py-2.5 rounded-full"
                     onMouseEnter={(e) => handleNavHover(e, true)}
                     onMouseLeave={(e) => handleNavHover(e, false)}
@@ -287,9 +289,10 @@ export default function FloatingNav() {
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* CTA (desktop) */}
               <button
-                className="flex items-center gap-2 bg-slate-900 text-white font-sans font-medium text-sm px-6 py-3 rounded-full shadow-[0_-5px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-shadow"
+                onClick={() => scrollToId("#contact")}
+                className="hidden md:flex items-center gap-2 bg-slate-900 text-white font-sans font-medium text-sm px-6 py-3 rounded-full shadow-[0_-5px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-shadow cursor-pointer"
                 onMouseEnter={(e) => handleButtonHover(e, true)}
                 onMouseLeave={(e) => handleButtonHover(e, false)}
                 style={{ transformOrigin: "center center" }}
@@ -298,8 +301,48 @@ export default function FloatingNav() {
                 {t.hireMe}
                 <ArrowUpRight size={16} className="btn-arrow text-slate-400" />
               </button>
+
+              {/* Hamburger (mobile) */}
+              <button
+                onClick={() => setIsMenuOpen((v) => !v)}
+                aria-label="Toggle navigation menu"
+                aria-expanded={isMenuOpen}
+                className="md:hidden flex items-center justify-center w-10 h-10 rounded-full text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+              >
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
             </div>
           </nav>
+        </div>
+
+        {/* Mobile menu */}
+        <div
+          className={`md:hidden mt-3 origin-top transition-all duration-300 ${
+            isMenuOpen
+              ? "opacity-100 scale-100 pointer-events-auto"
+              : "opacity-0 scale-95 pointer-events-none"
+          }`}
+        >
+          <div className="flex flex-col gap-1 bg-white/95 backdrop-blur-xl rounded-[24px] p-3 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.12)] border border-slate-100">
+            {t.links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
+                className="font-sans font-medium text-slate-600 text-base px-4 py-3 rounded-2xl hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            <button
+              onClick={(e) => handleLinkClick(e, "#contact")}
+              className="mt-1 flex items-center justify-center gap-2 bg-slate-900 text-white font-sans font-medium text-sm px-6 py-3.5 rounded-2xl"
+            >
+              <Sparkles size={14} className="text-indigo-400" />
+              {t.hireMe}
+              <ArrowUpRight size={16} className="text-slate-400" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -42,13 +42,6 @@ export default function JourneySection() {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
 
-  // Global Language Sync
-  useEffect(() => {
-    const handleLangChange = (e) => setLang(e.detail);
-    window.addEventListener("languageChange", handleLangChange);
-    return () => window.removeEventListener("languageChange", handleLangChange);
-  }, []);
-
   const t = config[lang]?.journey;
 
   useGSAP(
@@ -148,9 +141,10 @@ export default function JourneySection() {
 
   return (
     <section
+      id="journey"
       ref={containerRef}
       /* App-like Layering: Dark background overlapping the previous light section */
-      className="relative bg-slate-950 rounded-t-[40px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] -mt-4 z-30 overflow-hidden font-sans flex flex-col justify-center"
+      className="relative bg-slate-950 rounded-t-[40px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] -mt-4 z-30 overflow-hidden font-sans flex flex-col justify-center scroll-mt-28"
       style={{ minHeight: "100vh" }}
     >
       {/* Background Soft Ambient Light */}
