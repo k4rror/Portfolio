@@ -1,173 +1,118 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Code2, ArrowUpRight, Sparkles, Globe, ChevronDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(useGSAP);
 
-// Dummy config to make component fully functional standalone
 const config = {
   en: {
     nav: {
-      logo: "Karol Malina",
-      links:[
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Skills", href: "#skills" },
-        { name: "My journey", href: "#journey" },
+      logo: "KMalina.",
+      links: [
+        { name: "Work", href: "#work" },
+        { name: "Stack", href: "#stack" },
+        { name: "Journey", href: "#journey" },
+        { name: "Contact", href: "#contact" },
       ],
-      hireMe: "Hire Me"
-    }
+      hireMe: "Hire Me",
+    },
   },
   pl: {
     nav: {
-      logo: "Karol Malina",
-      links:[
-        { name: "O mnie", href: "#about" },
-        { name: "Projekty", href: "#projects" },
-        { name: "Umiejętności", href: "#skills" },
-        { name: "Moja Droga", href: "#journey" },
+      logo: "KMalina.",
+      links: [
+        { name: "Projekty", href: "#work" },
+        { name: "Stack", href: "#stack" },
+        { name: "Historia", href: "#journey" },
+        { name: "Kontakt", href: "#contact" },
       ],
-      hireMe: "Zatrudnij"
-    }
-  }
+      hireMe: "Zatrudnij",
+    },
+  },
 };
+
 const LANG_KEY = "portfolio_lang";
 
 function getInitialLang(languages) {
-  const stored = localStorage.getItem(LANG_KEY);
-  return stored && languages.includes(stored) ? stored : languages[0];
+  try {
+    const stored = localStorage.getItem(LANG_KEY);
+    return stored && languages.includes(stored) ? stored : languages[0];
+  } catch {
+    return languages[0];
+  }
 }
 
 export default function FloatingNav() {
   const languages = Object.keys(config);
-
   const [lang, setLang] = useState(() => getInitialLang(languages));
-  const[isScrolled, setIsScrolled] = useState(false);
-  const[isLangOpen, setIsLangOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const containerRef = useRef(null);
-  const starRef = useRef(null);
-  const dropdownRef = useRef(null);
-
   const t = config[lang].nav;
 
-  // ── Global language sync ───────────────────────────────────────────────────
   useEffect(() => {
     const handleLangChange = (e) => setLang(e.detail);
     window.addEventListener("languageChange", handleLangChange);
     return () => window.removeEventListener("languageChange", handleLangChange);
-  },[]);
+  }, []);
 
-  // ── Scroll tracking ────────────────────────────────────────────────────────
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  },[]);
+  }, []);
 
-  // ── Dropdown animation ─────────────────────────────────────────────────────
-  useGSAP(() => {
-    if (!dropdownRef.current) return;
-    if (isLangOpen) {
-      gsap.to(dropdownRef.current, {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        display: "flex",
-        duration: 0.35,
-        ease: "expo.out",
-        overwrite: true,
-      });
-    } else {
-      gsap.to(dropdownRef.current, {
-        y: -8,
-        scale: 0.96,
+  const { contextSafe } = useGSAP(
+    () => {
+      gsap.from(".nav-element", {
+        y: -16,
         opacity: 0,
-        display: "none",
-        duration: 0.2,
-        ease: "power2.inOut",
-        overwrite: true,
+        duration: 0.7,
+        stagger: 0.04,
+        ease: "power4.out",
+        delay: 0.08,
       });
-    }
-  }, [isLangOpen]);
+    },
+    { scope: containerRef }
+  );
 
-  // ── Mount animation & Context Safe for Event Handlers ──────────────────────
-  const { contextSafe } = useGSAP(() => {
-    gsap.from(".nav-element", {
-      y: -20,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.04,
-      ease: "expo.out",
-      delay: 0.1,
-    });
-
-    if (starRef.current) {
-      gsap.to(starRef.current, {
-        rotation: 360,
-        repeat: -1,
-        duration: 4.5,
-        ease: "none",
-        force3D: true,
-        transformOrigin: "50% 50%",
-      });
-    }
-  }, { scope: containerRef });
-
-  // ── Language switch ────────────────────────────────────────────────────────
   const switchLanguage = (newLang) => {
-    if (newLang === lang) {
-      setIsLangOpen(false);
-      return;
-    }
+    if (newLang === lang) return;
     localStorage.setItem(LANG_KEY, newLang);
     gsap.to("body", {
       opacity: 0,
-      duration: 0.2,
+      duration: 0.18,
       ease: "power2.in",
       onComplete: () => window.location.reload(),
     });
-    setIsLangOpen(false);
   };
 
-  // ── Micro-interactions (Fixed with overwrite: true & contextSafe) ──────────
   const handleNavHover = contextSafe((e, isEnter) => {
     gsap.to(e.currentTarget, {
-      backgroundColor: isEnter ? "rgba(241,245,249,1)" : "rgba(241,245,249,0)",
-      color: isEnter ? "#0f172a" : "#64748b",
-      scale: isEnter ? 1.05 : 1,
-      duration: isEnter ? 0.3 : 0.2,
-      ease: isEnter ? "back.out(2)" : "power2.out",
-      overwrite: true, // This explicitly kills conflicting tweens on rapid hover
-    });
-  });
-
-  const handleLogoHover = contextSafe((e, isEnter) => {
-    gsap.to(e.currentTarget, {
-      scale: isEnter ? 1.04 : 1,
-      duration: isEnter ? 0.3 : 0.2,
-      ease: isEnter ? "back.out(2)" : "power2.out",
+      color: isEnter ? "#fc5000" : "#070607",
+      duration: 0.22,
+      ease: "power2.out",
       overwrite: true,
     });
   });
 
   const handleButtonHover = contextSafe((e, isEnter) => {
     gsap.to(e.currentTarget, {
-      scale: isEnter ? 0.96 : 1,
-      duration: 0.3,
-      ease: "expo.out",
+      scale: isEnter ? 0.97 : 1,
+      backgroundColor: isEnter ? "#e04600" : "#fc5000",
+      duration: 0.25,
+      ease: "power2.out",
       overwrite: true,
     });
-    
     const arrow = e.currentTarget.querySelector(".btn-arrow");
     if (arrow) {
       gsap.to(arrow, {
-        x: isEnter ? 4 : 0,
-        y: isEnter ? -4 : 0,
-        duration: 0.3,
-        ease: "back.out(2)",
+        x: isEnter ? 3 : 0,
+        y: isEnter ? -3 : 0,
+        duration: 0.25,
+        ease: "power2.out",
         overwrite: true,
       });
     }
@@ -179,128 +124,72 @@ export default function FloatingNav() {
       className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
     >
       <div
-        className={`pointer-events-auto w-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          isScrolled ? "max-w-4xl" : "max-w-7xl"
+        className={`pointer-events-auto w-full transition-all duration-500 ${
+          isScrolled ? "max-w-4xl" : "max-w-[1280px]"
         }`}
       >
-        <div
-          className={`relative rounded-full p-[1.5px] transition-all duration-500 ease-out ${
+        <nav
+          className={`relative flex items-center justify-between rounded-[800px] transition-all duration-500 ${
             isScrolled
-              ? "shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] bg-slate-200/60"
-              : "shadow-none bg-transparent"
+              ? "bg-limestone px-4 py-2.5 md:px-5"
+              : "bg-transparent px-2 py-2"
           }`}
         >
-          {/* Spinning conic border */}
-          <div
-            className={`absolute inset-0 overflow-hidden rounded-full transition-opacity duration-500 pointer-events-none ${
-              isScrolled ? "opacity-100" : "opacity-0"
-            }`}
+          <a
+            href="/"
+            className="nav-element flex items-center gap-2.5 px-2 group"
           >
-            <div
-              ref={starRef}
-              className="absolute top-1/2 left-1/2 w-[1500px] h-[1500px] -translate-x-1/2 -translate-y-1/2 blur-[1px] opacity-90"
-              style={{
-                willChange: "transform",
-                background:
-                  "conic-gradient(from 0deg, transparent 50%, rgba(99,102,241,0.15) 75%, rgba(99,102,241,0.9) 95%, rgba(255,255,255,1) 100%)",
-              }}
-            />
-          </div>
+            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-ember text-obsidian font-display text-lg leading-none">
+              K
+            </span>
+            <span className="font-display text-[26px] leading-none tracking-[0.02em] text-obsidian">
+              {t.logo}
+            </span>
+          </a>
 
-          {/* Inner nav */}
-          <nav
-            className={`relative flex items-center justify-between rounded-full transition-all duration-500 ease-out ${
-              isScrolled
-                ? "bg-white/95 backdrop-blur-xl px-3 py-2.5"
-                : "bg-transparent px-2 py-2"
-            }`}
-          >
-            {/* Logo */}
-            <a
-              href="/"
-              className="nav-element flex items-center gap-2 group cursor-pointer px-2"
-              onMouseEnter={(e) => handleLogoHover(e, true)}
-              onMouseLeave={(e) => handleLogoHover(e, false)}
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-100 group-hover:text-indigo-700">
-                <Code2 size={20} strokeWidth={2.5} />
-              </div>
-              <span className="font-sans font-bold text-slate-900 tracking-tight text-lg">
-                {t.logo}
-              </span>
-            </a>
+          <ul className="hidden md:flex items-center gap-[9px]">
+            {t.links.map((link) => (
+              <li key={link.name} className="nav-element">
+                <a
+                  href={link.href}
+                  className="font-body font-medium text-[16px] text-obsidian block px-3 py-2"
+                  onMouseEnter={(e) => handleNavHover(e, true)}
+                  onMouseLeave={(e) => handleNavHover(e, false)}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-            {/* Desktop links */}
-            <ul className="hidden md:flex items-center gap-1">
-              {t.links.map((link) => (
-                <li key={link.name} className="nav-element">
-                  <a
-                    href={link.href}
-                    className="font-sans font-medium text-slate-500 text-sm tracking-wide block px-5 py-2.5 rounded-full"
-                    onMouseEnter={(e) => handleNavHover(e, true)}
-                    onMouseLeave={(e) => handleNavHover(e, false)}
-                    style={{ transformOrigin: "center center" }}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Right actions */}
-            <div className="nav-element flex items-center gap-3">
-              {/* Language switcher */}
-              <div className="relative">
+          <div className="nav-element flex items-center gap-3">
+            <div className="flex items-center p-1 rounded-[800px] bg-limestone">
+              {languages.map((l) => (
                 <button
-                  onClick={() => setIsLangOpen((v) => !v)}
-                  className="flex items-center gap-1.5 px-3 py-2.5 text-slate-500 hover:text-slate-900 transition-colors rounded-full hover:bg-slate-100"
+                  key={l}
+                  onClick={() => switchLanguage(l)}
+                  className={`min-w-[44px] px-3 py-1.5 rounded-[800px] text-[12px] font-medium uppercase tracking-[0.06em] transition-colors duration-200 ${
+                    lang === l
+                      ? "bg-obsidian text-chalk"
+                      : "bg-transparent text-obsidian/50 hover:text-obsidian"
+                  }`}
                 >
-                  <Globe size={16} />
-                  <span className="font-sans font-medium text-sm uppercase">{lang}</span>
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-300 ${isLangOpen ? "rotate-180" : ""}`}
-                  />
+                  {l}
                 </button>
-
-                {/* Dropdown */}
-                <div
-                  ref={dropdownRef}
-                  className="absolute top-full right-0 mt-3 hidden flex-col w-36 bg-white rounded-[20px] p-1.5 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] border border-slate-100/50 backdrop-blur-xl z-50 origin-top-right"
-                >
-                  {languages.map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => switchLanguage(l)}
-                      className={`flex items-center justify-between px-4 py-2.5 text-sm font-medium rounded-xl transition-colors ${
-                        lang === l
-                          ? "bg-indigo-50 text-indigo-600"
-                          : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                      }`}
-                    >
-                      <span>{l.toUpperCase()}</span>
-                      {lang === l && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTA */}
-              <button
-                className="flex items-center gap-2 bg-slate-900 text-white font-sans font-medium text-sm px-6 py-3 rounded-full shadow-[0_-5px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-shadow"
-                onMouseEnter={(e) => handleButtonHover(e, true)}
-                onMouseLeave={(e) => handleButtonHover(e, false)}
-                style={{ transformOrigin: "center center" }}
-              >
-                <Sparkles size={14} className="text-indigo-400" />
-                {t.hireMe}
-                <ArrowUpRight size={16} className="btn-arrow text-slate-400" />
-              </button>
+              ))}
             </div>
-          </nav>
-        </div>
+
+            <a
+              href="#contact"
+              className="flex items-center gap-2 bg-ember text-obsidian font-body font-medium text-[16px] px-6 py-3 rounded-[800px]"
+              onMouseEnter={(e) => handleButtonHover(e, true)}
+              onMouseLeave={(e) => handleButtonHover(e, false)}
+            >
+              {t.hireMe}
+              <ArrowUpRight size={16} className="btn-arrow" />
+            </a>
+          </div>
+        </nav>
       </div>
     </div>
   );

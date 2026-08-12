@@ -1,1 +1,83 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,500;1,9..40,500&display=swap");
+
+@theme {
+  --color-ember: #fc5000;
+  --color-plasma-violet: #524ae9;
+  --color-sulfur: #f5f28e;
+  --color-limestone: #f7f6f2;
+  --color-pumice: #e2e2df;
+  --color-obsidian: #070607;
+  --color-chalk: #ffffff;
+
+  --font-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --text-caption: 12px;
+  --text-body-sm: 14px;
+  --text-body: 16px;
+  --text-subheading: 26px;
+  --text-heading-sm: 30px;
+  --text-heading: 32px;
+  --text-heading-lg: 48px;
+  --text-heading-2xl: 80px;
+  --text-heading-3xl: 96px;
+  --text-display: 189px;
+
+  --radius-cards: 40px;
+  --radius-pills: 800px;
+  --radius-small: 16px;
+  --radius-inputs: 100px;
+  --radius-medium: 20px;
+  --radius-buttons: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-pumice);
+  color: var(--color-obsidian);
+  font-family: var(--font-body);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-chalk);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.94;
+}
+
+.halftone {
+  background-color: var(--color-plasma-violet);
+  background-image:
+    radial-gradient(circle, #fc5000 1.15px, transparent 1.2px),
+    linear-gradient(135deg, #524ae9 0%, #fc5000 100%);
+  background-size: 7px 7px, 100% 100%;
+  background-blend-mode: multiply;
+}
+
+.halftone-ember {
+  background-color: var(--color-ember);
+  background-image: radial-gradient(circle, #070607 0.9px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+.dotted-h {
+  border: none;
+  border-top: 1.5px dotted var(--color-obsidian);
+}
+
+.no-shadow,
+.no-shadow * {
+  box-shadow: none !important;
+}

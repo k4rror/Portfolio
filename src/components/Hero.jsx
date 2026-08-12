@@ -3,24 +3,16 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import {
   MapPin,
-  Clock,
   Code2,
   Calendar,
   ArrowRight,
-  Sparkles,
   GraduationCap,
 } from "lucide-react";
 import config from "./config.json";
 
 gsap.registerPlugin(useGSAP);
 
-const iconMap = {
-  MapPin,
-  Clock,
-  Code2,
-  Calendar,
-  GraduationCap,
-};
+const iconMap = { MapPin, Code2, Calendar, GraduationCap };
 const LANG_KEY = "portfolio_lang";
 
 export function getStoredLang(languages) {
@@ -34,21 +26,19 @@ export function getStoredLang(languages) {
 
 export function useLang(languages) {
   const [lang, setLang] = useState(() => getStoredLang(languages));
-
   useEffect(() => {
     const handler = (e) => setLang(e.detail);
     window.addEventListener("languageChange", handler);
     return () => window.removeEventListener("languageChange", handler);
   }, []);
-
   return lang;
 }
+
 export default function HeroSection() {
   const languages = Object.keys(config);
   const lang = useLang(languages);
   const containerRef = useRef(null);
-    
-  // Global Language Sync
+
   useEffect(() => {
     const handleLangChange = (e) => setLang(e.detail);
     window.addEventListener("languageChange", handleLangChange);
@@ -59,35 +49,33 @@ export default function HeroSection() {
 
   useGSAP(
     () => {
-      // Re-trigger animation on language change or mount
       gsap.fromTo(
         ".hero-element",
-        { y: 40, opacity: 0 },
+        { y: 36, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: 1.1,
           stagger: 0.06,
           ease: "power4.out",
-          delay: 0.1,
+          delay: 0.08,
         }
       );
     },
     { scope: containerRef, dependencies: [lang] }
   );
 
-  // Tactile Micro-interactions (Light Mode Colors matching Nav)
   const handleButtonHover = (e, isEnter, isPrimary) => {
     gsap.to(e.currentTarget, {
       scale: isEnter ? 0.97 : 1,
       backgroundColor: isPrimary
         ? isEnter
-          ? "#4f46e5" // indigo-600
-          : "#6366f1" // indigo-500
+          ? "#e04600"
+          : "#fc5000"
         : isEnter
-        ? "rgba(241, 245, 249, 1)" // slate-100
+        ? "#f7f6f2"
         : "transparent",
-      duration: 0.3,
+      duration: 0.25,
       ease: "power2.out",
       force3D: true,
     });
@@ -95,12 +83,9 @@ export default function HeroSection() {
 
   const handlePillHover = (e, isEnter) => {
     gsap.to(e.currentTarget, {
-      y: isEnter ? -3 : 0,
-      backgroundColor: isEnter ? "#0f172a" : "#ffffff", // slate-900 : white
-      color: isEnter ? "#ffffff" : "#475569", // white : slate-600
-      borderColor: isEnter ? "#0f172a" : "#e2e8f0", // slate-900 : slate-200
-      duration: 0.3,
-      ease: "back.out(1.5)",
+      backgroundColor: isEnter ? "#fc5000" : "#f5f28e",
+      duration: 0.25,
+      ease: "power2.out",
       force3D: true,
     });
   };
@@ -109,115 +94,92 @@ export default function HeroSection() {
     const arrow = e.currentTarget.querySelector(".service-arrow");
     gsap.to(e.currentTarget, {
       x: isEnter ? 8 : 0,
-      color: isEnter ? "#0f172a" : "#334155", // slate-900 : slate-700
-      duration: 0.3,
+      duration: 0.25,
       ease: "power2.out",
     });
     if (arrow) {
       gsap.to(arrow, {
         x: isEnter ? 4 : 0,
-        color: isEnter ? "#4f46e5" : "#6366f1", // indigo-600 : indigo-500
-        duration: 0.3,
+        color: isEnter ? "#fc5000" : "#070607",
+        duration: 0.25,
         ease: "power2.out",
       });
     }
   };
 
-  const handleStatHover = (e, isEnter) => {
-    gsap.to(e.currentTarget, {
-      y: isEnter ? -6 : 0,
-      backgroundColor: isEnter ? "#ffffff" : "rgba(255, 255, 255, 0.6)",
-      borderColor: isEnter ? "rgba(99, 102, 241, 0.3)" : "rgba(226, 232, 240, 0.8)",
-      boxShadow: isEnter
-        ? "0 20px 40px -10px rgba(0,0,0,0.08)"
-        : "0 0px 0px rgba(0,0,0,0)",
-      duration: 0.4,
-      ease: "power3.out",
-      force3D: true,
-    });
-  };
-
   return (
     <section
+      id="about"
       ref={containerRef}
-      className="relative min-h-screen bg-slate-50 pt-36 pb-20 px-6 md:px-12 lg:px-24 flex flex-col justify-center overflow-hidden font-sans"
+      className="relative min-h-screen bg-pumice pt-36 pb-20 px-6 md:px-12 lg:px-24 flex flex-col justify-center overflow-hidden"
     >
-      {/* Background Soft Glow (matches light mode Nav theme) */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-300/30 blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto w-full flex flex-col gap-16 lg:gap-24 relative z-10">
-        
-        {/* Top Header Label */}
-        <div className="hero-element uppercase tracking-[0.2em] text-slate-500 font-bold text-xs md:text-sm">
+      <div className="max-w-[1280px] mx-auto w-full flex flex-col gap-16 lg:gap-20 relative z-10">
+        <div className="hero-element uppercase tracking-[0.18em] text-obsidian/50 font-medium text-[12px]">
           {t.sectionLabel}
         </div>
 
-        {/* Main Grid Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
-          
-          {/* Left Column: Intro & Details */}
-          <div className="flex flex-col gap-8">
-            <h1 className="hero-element text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1]">
-              {t.greeting} <br />
-              <span className="text-indigo-600">{t.name}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            <h1 className="hero-element font-display text-[64px] md:text-[96px] lg:text-[140px] xl:text-[189px] leading-[0.94] tracking-[0.02em] text-obsidian">
+              {t.greeting}
+              <br />
+              <span className="text-ember">{t.name}</span>
             </h1>
 
-            {/* Personal Info List */}
-            <ul className="hero-element flex flex-col gap-4 mt-2">
+            <ul className="hero-element flex flex-col gap-3 mt-1">
               {t.personalInfo.map((item, i) => {
                 const IconComponent = iconMap[item.icon];
                 return (
-                  <li key={i} className="flex items-center gap-4 text-slate-600">
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600">
-                      {IconComponent && <IconComponent size={16} strokeWidth={2.5} />}
+                  <li key={i} className="flex items-center gap-4 text-obsidian">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-limestone text-ember">
+                      {IconComponent && (
+                        <IconComponent size={16} strokeWidth={2.5} />
+                      )}
                     </div>
-                    <span className="text-base font-medium">{item.text}</span>
+                    <span className="text-[16px] font-medium leading-[1.55]">
+                      {item.text}
+                    </span>
                   </li>
                 );
               })}
             </ul>
 
-            {/* Bio */}
-            <p className="hero-element text-slate-600 text-lg leading-relaxed max-w-lg mt-2">
+            <p className="hero-element text-obsidian/80 text-[16px] leading-[1.55] max-w-lg">
               {t.bio}
             </p>
 
-            {/* Actions */}
-            <div className="hero-element flex flex-wrap items-center gap-4 mt-4">
-              <button
+            <div className="hero-element flex flex-wrap items-center gap-4 mt-2">
+              <a
+                href="#contact"
                 onMouseEnter={(e) => handleButtonHover(e, true, true)}
                 onMouseLeave={(e) => handleButtonHover(e, false, true)}
-                className="flex items-center gap-2 px-8 py-3.5 bg-indigo-500 text-white font-medium rounded-full shadow-[0_10px_30px_-10px_rgba(99,102,241,0.4)]"
+                className="flex items-center gap-2 px-6 py-3 bg-ember text-obsidian font-medium text-[16px] rounded-[800px]"
               >
-                <Sparkles size={16} />
                 {t.buttons.primary}
-              </button>
-              
-              <button
+              </a>
+              <a
+                href="#work"
                 onMouseEnter={(e) => handleButtonHover(e, true, false)}
                 onMouseLeave={(e) => handleButtonHover(e, false, false)}
-                className="flex items-center gap-2 px-8 py-3.5 border border-slate-300 text-slate-700 font-medium rounded-full transition-colors"
+                className="flex items-center gap-2 px-4 py-4 border-[1.5px] border-obsidian text-obsidian font-medium text-[16px] rounded-[40px]"
               >
                 {t.buttons.secondary}
-              </button>
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Skills & Services */}
-          <div className="flex flex-col gap-14 lg:pl-12">
-            
-            {/* Skills */}
-            <div className="flex flex-col gap-6">
-              <h3 className="hero-element text-2xl font-bold text-slate-900">
+          <div className="lg:col-span-5 flex flex-col gap-8">
+            <div className="flex flex-col gap-5">
+              <h3 className="hero-element font-display text-[32px] leading-none tracking-[0.02em] text-obsidian">
                 {t.skillsLabel}
               </h3>
-              <div className="hero-element flex flex-wrap gap-3">
+              <div className="hero-element flex flex-wrap gap-2">
                 {t.skills.map((skill) => (
                   <div
                     key={skill}
                     onMouseEnter={(e) => handlePillHover(e, true)}
                     onMouseLeave={(e) => handlePillHover(e, false)}
-                    className="px-5 py-2.5 bg-white border border-slate-200 text-slate-600 text-sm font-medium rounded-full cursor-default"
+                    className="px-3 py-1 bg-sulfur text-obsidian text-[12px] font-medium rounded-[800px] cursor-default"
                   >
                     {skill}
                   </div>
@@ -225,52 +187,46 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Services */}
-            <div className="flex flex-col gap-6">
-              <h3 className="hero-element text-2xl font-bold text-slate-900">
+            <div className="flex flex-col gap-5">
+              <h3 className="hero-element font-display text-[32px] leading-none tracking-[0.02em] text-obsidian">
                 {t.servicesLabel}
               </h3>
-              <ul className="flex flex-col gap-4">
+              <ul className="flex flex-col gap-3">
                 {t.services.map((service, i) => (
                   <li
                     key={i}
                     onMouseEnter={(e) => handleServiceHover(e, true)}
                     onMouseLeave={(e) => handleServiceHover(e, false)}
-                    className="hero-element flex items-center gap-3 text-slate-600 font-medium cursor-pointer"
+                    className="hero-element flex items-center gap-3 text-obsidian font-medium text-[16px] cursor-pointer"
                   >
-                    <ArrowRight 
-                      size={16} 
-                      className="service-arrow text-indigo-500" 
-                      strokeWidth={2.5} 
+                    <ArrowRight
+                      size={16}
+                      className="service-arrow text-obsidian"
+                      strokeWidth={2.5}
                     />
                     {service}
                   </li>
                 ))}
               </ul>
             </div>
-
           </div>
         </div>
 
-        {/* Bottom Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {t.stats.map((stat, i) => (
             <div
               key={i}
-              onMouseEnter={(e) => handleStatHover(e, true)}
-              onMouseLeave={(e) => handleStatHover(e, false)}
-              className="hero-element flex flex-col justify-center p-6 md:p-8 bg-white/60 border border-slate-200/80 rounded-[20px] backdrop-blur-sm cursor-default transition-colors"
+              className="hero-element flex flex-col justify-between p-10 bg-ember rounded-[40px] min-h-[180px]"
             >
-              <div className="text-4xl md:text-5xl font-bold text-indigo-600 tracking-tight">
-                {stat.value}
-              </div>
-              <div className="text-sm font-medium text-slate-500 mt-2">
+              <div className="text-[14px] font-medium text-chalk/90 leading-[1.2]">
                 {stat.label}
+              </div>
+              <div className="font-display text-[56px] md:text-[64px] lg:text-[80px] leading-[1.1] tracking-[0.02em] text-chalk">
+                {stat.value}
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
