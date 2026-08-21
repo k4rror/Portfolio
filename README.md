@@ -1,17 +1,45 @@
-# React + Vite
+# Karol Malina — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Jednostronicowe portfolio frontend/full-stack developera, dwujęzyczne (EN/PL), z animacjami GSAP.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Vite + React 19 + TypeScript**
+- **Tailwind CSS 4** (tokeny designu w `@theme` w `src/index.css`)
+- **GSAP + @gsap/react** (animacje wejścia, poziomy scroll w sekcji Journey)
+- **lucide-react** (ikony)
 
-## React Compiler
+## Struktura
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── i18n/
+│   ├── content.json         # wszystkie treści EN + PL (jedno źródło prawdy)
+│   └── LanguageContext.tsx  # provider języka + hooki useLanguage/useContent
+├── lib/animations.ts        # współdzielone handlery hover (GSAP, reduced-motion aware)
+├── components/              # sekcje strony (Navigation, Hero, Projects, Stack, Journey, Contact)
+└── index.css                # tokeny designu + style globalne
+```
 
-## Expanding the ESLint configuration
+## Komendy
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# Portfolio" 
+```bash
+npm install       # instalacja
+npm run dev       # serwer deweloperski
+npm run build     # typecheck + build produkcyjny (dist/)
+npm run lint      # ESLint
+npm run typecheck # samo tsc
+```
+
+## Edycja treści
+
+Wszystkie teksty (oba języki) są w `src/i18n/content.json` — komponenty nie zawierają treści.
+Linki do repozytoriów projektów: pola `projects.items[].repo`.
+
+## Uwagi
+
+- Zmiana języka jest natychmiastowa (React Context), wybór zapisywany w `localStorage`,
+  `<html lang>` aktualizowany automatycznie.
+- Animacje respektują `prefers-reduced-motion` (GSAP `matchMedia`).
+- Przed wdrożeniem na własną domenę uzupełnij `og:url`/`og:image` w `index.html`
+  oraz `robots.txt` i `public/sitemap.xml`.

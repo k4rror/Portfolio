@@ -1,0 +1,538 @@
+{
+  "en": {
+    "nav": {
+      "logo": "KMalina.",
+      "links": [
+        { "name": "Work", "href": "#work" },
+        { "name": "Stack", "href": "#stack" },
+        { "name": "Journey", "href": "#journey" },
+        { "name": "Contact", "href": "#contact" }
+      ],
+      "hireMe": "Get in Touch",
+      "menuLabel": "Menu",
+      "logoLabel": "KMalina — back to top"
+    },
+    "hero": {
+      "sectionLabel": "About Me",
+      "greeting": "Hi, I'm",
+      "name": "Karol Malina",
+      "personalInfo": [
+        { "icon": "MapPin", "text": "Based in Wadowice, Poland" },
+        { "icon": "GraduationCap", "text": "IT Technician (Certified)" },
+        { "icon": "Code2", "text": "Junior Web Developer / Front-End" },
+        { "icon": "Calendar", "text": "Fresh Graduate, Ready to Work" }
+      ],
+      "bio": "Ambitious, certified IT technician with outstanding vocational exam results (100% & 97% practical scores), focused on modern web technologies. I have hands-on experience in independently designing and deploying Full-Stack applications using Next.js, JavaScript, and TailwindCSS. Thanks to advanced AI-assisted development tools, I can significantly optimize my coding workflow.",
+      "buttons": {
+        "primary": "Get in Touch",
+        "secondary": "View Projects"
+      },
+      "skillsLabel": "Key Skills",
+      "skills": [
+        "JavaScript", "HTML5", "CSS3", "Next.js",
+        "TailwindCSS", "Python", "MySQL", "Supabase"
+      ],
+      "servicesLabel": "Services",
+      "services": [
+        "Frontend Development",
+        "Full-Stack Web Applications",
+        "CMS & Admin Panel Development",
+        "Responsive UI Design",
+        "API Integration",
+        "AI-Assisted Development"
+      ],
+      "stats": [
+        { "value": "100%", "label": "INF.02 Practical Score" },
+        { "value": "97%", "label": "INF.03 Practical Score" },
+        { "value": "2+", "label": "Portfolio Projects" },
+        { "value": "1", "label": "Deployed Full-Stack App" }
+      ]
+    },
+    "projects": {
+      "sectionLabel": "Portfolio",
+      "title": "Selected Works",
+      "intro": "Two projects designed, built and shipped end to end on my own — interface, backend and CMS included.",
+      "count": "02 projects · 2024–2025",
+      "stackLabel": "Stack",
+      "cta": "Visit live site",
+      "items": [
+        {
+          "id": "01",
+          "title": "Malinowe Zdrowie",
+          "category": "Full-Stack Web Application",
+          "year": "2024",
+          "role": "Solo Full-Stack",
+          "status": "Live",
+          "description": "A responsive Full-Stack landing page built with Next.js, featuring a fully custom blog system and a dedicated admin CMS panel for easy content management without touching the source code. Styled with TailwindCSS, Radix UI, and shadcn/ui.",
+          "tech": ["Next.js", "TailwindCSS", "shadcn/ui", "Supabase"],
+          "image": "/mal.webp",
+          "imageWidth": 1903,
+          "imageHeight": 914,
+          "link": "https://malinowezdrowie.vercel.app/",
+          "repo": ""
+        },
+        {
+          "id": "02",
+          "title": "Szybkie Jedzenie v2",
+          "category": "AI-Powered Web App",
+          "year": "2025",
+          "role": "Solo Full-Stack",
+          "status": "In development",
+          "description": "An AI-powered restaurant discovery platform — users describe what they are looking for and the AI matches them with ideal venues in seconds, analyzing menus, reviews and ambiance. Built with a Next.js frontend, custom TailwindCSS component architecture, and a backend API integration.",
+          "tech": ["Next.js", "TailwindCSS", "Supabase", "REST API"],
+          "image": "/szybk.webp",
+          "imageWidth": 1911,
+          "imageHeight": 918,
+          "link": "https://szybkiejedzeniev33.vercel.app/",
+          "repo": ""
+        }
+      ]
+    },
+    "journey": {
+      "sectionLabel": "My Journey",
+      "title": "How It All Started",
+      "items": [
+        {
+          "id": "01",
+          "year": "2020",
+          "icon": "Gamepad2",
+          "title": "The Beginning",
+          "description": "Began my IT education at the Vocational Training Center in Wadowice. I discovered my passion for programming and started learning the fundamentals of computer systems, networks, and web technologies."
+        },
+        {
+          "id": "02",
+          "year": "2023",
+          "icon": "GraduationCap",
+          "title": "Certified Excellence",
+          "description": "Passed the professional INF.02 exam (Administration of computer systems) with 100% on the practical part, and INF.03 (Web & database development) with 97% on the practical part — proving a strong, hands-on command of IT fundamentals."
+        },
+        {
+          "id": "03",
+          "year": "2024",
+          "icon": "Code2",
+          "title": "Into the Modern Web",
+          "description": "Dove deep into the modern web ecosystem. Fell in love with Next.js, TailwindCSS, and component-driven architecture. Built and deployed my first real Full-Stack project: 'Malinowe Zdrowie' — a landing page with a custom CMS admin panel."
+        },
+        {
+          "id": "04",
+          "year": "2025",
+          "icon": "Rocket",
+          "title": "Ready for the Industry",
+          "description": "Actively developing my portfolio with projects like the geolocation food app 'Szybkie Jedzenie v2'. Leveraging AI-assisted development tools (Cursor, Claude Code) to write better code faster. Seeking my first professional role in the IT industry."
+        }
+      ]
+    },
+    "stack": {
+      "sectionLabel": "Tech Stack",
+      "title": "Languages & Skills",
+      "intro": "A practical stack I use to design, build and ship full-stack web apps on my own — interface, data and CMS included.",
+      "usedIn": "Used in",
+      "levelLabels": {
+        "core": "Core strength",
+        "strong": "Strong",
+        "proficient": "Proficient",
+        "working": "Working knowledge"
+      },
+      "languagesLabel": "Programming Languages",
+      "skillsLabel": "Frameworks & Tools",
+      "languages": [
+        {
+          "id": "lang-html-css",
+          "name": "HTML5 & CSS3",
+          "icon": "Code2",
+          "span": "featured",
+          "shortDesc": "The Web Foundation",
+          "longDesc": "Strong command of semantic HTML5 and modern CSS3. I write accessible, well-structured markup and craft custom styling solutions that go beyond utility frameworks when needed.",
+          "level": 92,
+          "tags": ["Semantic HTML", "Flexbox", "Grid", "Animations"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-js",
+          "name": "JavaScript",
+          "icon": "Terminal",
+          "span": "medium",
+          "shortDesc": "Primary Language",
+          "longDesc": "My main language for building interactive web applications. I use modern ES6+ features to write clean, efficient logic for both frontend and backend environments within the Next.js ecosystem.",
+          "level": 80,
+          "tags": ["ES6+", "Async/Await", "DOM Manipulation"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-sql",
+          "name": "SQL (MySQL)",
+          "icon": "Database",
+          "span": "medium",
+          "shortDesc": "Data & Backend",
+          "longDesc": "Experienced in designing relational database schemas and writing queries with MySQL. Applied in project backends to store and manage structured application data.",
+          "level": 70,
+          "tags": ["Relational DB", "Queries"],
+          "usedIn": [
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-py",
+          "name": "Python",
+          "icon": "Terminal",
+          "span": "band",
+          "shortDesc": "Scripting & Automation",
+          "longDesc": "Used for scripting, data processing, and backend logic. Familiar with core Python concepts and its application in web-related tasks and automation workflows.",
+          "level": 60,
+          "tags": ["Scripting", "Automation", "Data Processing"],
+          "usedIn": []
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill-next",
+          "name": "Next.js",
+          "icon": "Blocks",
+          "span": "tall",
+          "shortDesc": "Full-Stack Framework",
+          "longDesc": "My go-to framework for building modern web applications. I use Next.js for server-side rendering, static generation, API routes, and building full-stack solutions from a single codebase.",
+          "level": 78,
+          "tags": ["App Router", "SSR", "API Routes", "Vercel"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-tail",
+          "name": "TailwindCSS & shadcn/ui",
+          "icon": "Blocks",
+          "span": "wide",
+          "shortDesc": "Modern Styling",
+          "longDesc": "Crafting pixel-perfect, responsive interfaces rapidly using TailwindCSS utility classes combined with the accessible, composable shadcn/ui and Radix UI component library.",
+          "level": 88,
+          "tags": ["Utility-First", "Radix UI", "Responsive"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-db",
+          "name": "Supabase & MySQL",
+          "icon": "Database",
+          "span": "small",
+          "shortDesc": "Backend & Database",
+          "longDesc": "Using Supabase as a modern, scalable backend-as-a-service for authentication, real-time data, and storage, alongside MySQL for relational database design in full-stack projects.",
+          "level": 68,
+          "tags": ["BaaS", "REST API"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-ai",
+          "name": "AI-Assisted Development",
+          "icon": "Wrench",
+          "span": "small",
+          "shortDesc": "Modern Workflow",
+          "longDesc": "Proficient in leveraging cutting-edge AI coding tools like Cursor and Claude Code to dramatically speed up development, enforce best practices, and tackle complex architectural challenges.",
+          "level": 85,
+          "tags": ["Cursor", "Claude Code", "Prompt Engineering"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "sectionLabel": "Contact",
+      "title": "Let's work",
+      "intro": "Fresh graduate. Certified IT technician. I design, build and ship Next.js apps on my own — and I am looking for my first junior frontend / full-stack role.",
+      "badge": "Open to work",
+      "lookingForLabel": "Looking for",
+      "lookingFor": "Junior Frontend / Full-Stack",
+      "locationLabel": "Based in",
+      "location": "Wadowice, Poland · Remote-friendly",
+      "replyLabel": "Typical reply",
+      "replyValue": "24h",
+      "replyHint": "I read every message.",
+      "detailsLabel": "Details",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "githubLabel": "GitHub",
+      "cta": "Write to me"
+    }
+  },
+  "pl": {
+    "nav": {
+      "logo": "KMalina.",
+      "links": [
+        { "name": "Projekty", "href": "#work" },
+        { "name": "Stack", "href": "#stack" },
+        { "name": "Historia", "href": "#journey" },
+        { "name": "Kontakt", "href": "#contact" }
+      ],
+      "hireMe": "Skontaktuj się",
+      "menuLabel": "Menu",
+      "logoLabel": "KMalina — początek strony"
+    },
+    "hero": {
+      "sectionLabel": "O Mnie",
+      "greeting": "Cześć, jestem",
+      "name": "Karol Malina",
+      "personalInfo": [
+        { "icon": "MapPin", "text": "Wadowice, Polska" },
+        { "icon": "GraduationCap", "text": "Dyplomowany Technik Informatyk" },
+        { "icon": "Code2", "text": "Młodszy Programista / Front-End" },
+        { "icon": "Calendar", "text": "Świeży absolwent, gotowy do pracy" }
+      ],
+      "bio": "Ambitny, dyplomowany technik informatyk z wybitnymi wynikami z egzaminów zawodowych (praktyka zdana na 100% i 97%), ukierunkowany na nowoczesne technologie webowe. Posiadam praktyczne doświadczenie w samodzielnym projektowaniu i wdrażaniu aplikacji Full-Stack z wykorzystaniem Next.js, JavaScript oraz TailwindCSS. Dzięki zaawansowanej znajomości narzędzi AI dla programistów potrafię znacząco optymalizować czas pisania kodu.",
+      "buttons": {
+        "primary": "Skontaktuj się",
+        "secondary": "Zobacz projekty"
+      },
+      "skillsLabel": "Główne Umiejętności",
+      "skills": [
+        "JavaScript", "HTML5", "CSS3", "Next.js",
+        "TailwindCSS", "Python", "MySQL", "Supabase"
+      ],
+      "servicesLabel": "Usługi",
+      "services": [
+        "Rozwój Frontend",
+        "Aplikacje Full-Stack",
+        "Panele CMS i Administracyjne",
+        "Responsywny Design UI",
+        "Integracja API",
+        "Programowanie wspomagane AI"
+      ],
+      "stats": [
+        { "value": "100%", "label": "Wynik Praktyczny INF.02" },
+        { "value": "97%", "label": "Wynik Praktyczny INF.03" },
+        { "value": "2+", "label": "Projekty w Portfolio" },
+        { "value": "1", "label": "Wdrożona Aplikacja Full-Stack" }
+      ]
+    },
+    "projects": {
+      "sectionLabel": "Portfolio",
+      "title": "Wybrane Projekty",
+      "intro": "Dwa projekty zaprojektowane, zbudowane i wdrożone samodzielnie od początku do końca — interfejs, backend i CMS włącznie.",
+      "count": "02 projekty · 2024–2025",
+      "stackLabel": "Technologie",
+      "cta": "Odwiedź stronę",
+      "items": [
+        {
+          "id": "01",
+          "title": "Malinowe Zdrowie",
+          "category": "Aplikacja Full-Stack",
+          "year": "2024",
+          "role": "Solo Full-Stack",
+          "status": "Online",
+          "description": "Responsywna aplikacja webowa typu Full-Stack zbudowana w Next.js. Zawiera w pełni autorski system blogowy oraz dedykowany panel administratora CMS, umożliwiający zarządzanie treścią bez ingerencji w kod. Stylizowana z użyciem TailwindCSS, Radix UI i shadcn/ui.",
+          "tech": ["Next.js", "TailwindCSS", "shadcn/ui", "Supabase"],
+          "image": "/mal.webp",
+          "imageWidth": 1903,
+          "imageHeight": 914,
+          "link": "https://malinowezdrowie.vercel.app/",
+          "repo": ""
+        },
+        {
+          "id": "02",
+          "title": "Szybkie Jedzenie v2",
+          "category": "Aplikacja z AI",
+          "year": "2025",
+          "role": "Solo Full-Stack",
+          "status": "W rozwoju",
+          "description": "Platforma do odkrywania restauracji z wykorzystaniem AI — użytkownik opisuje, czego szuka, a algorytm w kilka sekund dopasowuje idealne lokale, analizując menu, opinie i atmosferę. Zbudowana na frontendzie w Next.js z architekturą komponentów opartą na TailwindCSS oraz integracją API po stronie backendu.",
+          "tech": ["Next.js", "TailwindCSS", "Supabase", "REST API"],
+          "image": "/szybk.webp",
+          "imageWidth": 1911,
+          "imageHeight": 918,
+          "link": "https://szybkiejedzeniev33.vercel.app/",
+          "repo": ""
+        }
+      ]
+    },
+    "journey": {
+      "sectionLabel": "Moja Historia",
+      "title": "Jak To Się Zaczęło",
+      "items": [
+        {
+          "id": "01",
+          "year": "2020",
+          "icon": "Gamepad2",
+          "title": "Pierwszy Krok",
+          "description": "Rozpocząłem edukację informatyczną w Centrum Kształcenia Zawodowego i Ustawicznego w Wadowicach. Odkryłem pasję do programowania i zacząłem zgłębiać podstawy systemów komputerowych, sieci i technologii webowych."
+        },
+        {
+          "id": "02",
+          "year": "2023",
+          "icon": "GraduationCap",
+          "title": "Certyfikaty z Wyróżnieniem",
+          "description": "Zdałem egzamin zawodowy INF.02 (Administracja systemami komputerowymi) z wynikiem 100% w części praktycznej oraz INF.03 (Tworzenie stron, aplikacji i baz danych) z wynikiem 97% w części praktycznej — potwierdzając solidną, praktyczną wiedzę IT."
+        },
+        {
+          "id": "03",
+          "year": "2024",
+          "icon": "Code2",
+          "title": "Nowoczesny Web Development",
+          "description": "Zanurzyłem się w nowoczesnym ekosystemie webowym. Zakochałem się w Next.js, TailwindCSS i architekturze komponentowej. Zbudowałem i wdrożyłem swój pierwszy prawdziwy projekt Full-Stack: 'Malinowe Zdrowie' — landing page z autorskim panelem CMS."
+        },
+        {
+          "id": "04",
+          "year": "2025",
+          "icon": "Rocket",
+          "title": "Gotowy na Branżę",
+          "description": "Aktywnie rozwijam portfolio — m.in. aplikację geolokalizacyjną 'Szybkie Jedzenie v2'. Wykorzystuję narzędzia AI (Cursor, Claude Code) do pisania lepszego kodu szybciej. Szukam swojej pierwszej profesjonalnej roli w branży IT."
+        }
+      ]
+    },
+    "stack": {
+      "sectionLabel": "Tech Stack",
+      "title": "Języki i Umiejętności",
+      "intro": "Praktyczny stack, którym samodzielnie projektuję, buduję i wdrażam aplikacje full-stack — od interfejsu, przez dane, po CMS.",
+      "usedIn": "Używane w",
+      "levelLabels": {
+        "core": "Mocna strona",
+        "strong": "Solidnie",
+        "proficient": "Sprawnie",
+        "working": "Podstawy"
+      },
+      "languagesLabel": "Języki Programowania",
+      "skillsLabel": "Frameworki i Narzędzia",
+      "languages": [
+        {
+          "id": "lang-html-css",
+          "name": "HTML5 & CSS3",
+          "icon": "Code2",
+          "span": "featured",
+          "shortDesc": "Fundament Webu",
+          "longDesc": "Silna znajomość semantycznego HTML5 i nowoczesnego CSS3. Piszę dostępny, dobrze ustrukturyzowany markup i tworzę niestandardowe rozwiązania stylistyczne wykraczające poza frameworki narzędziowe.",
+          "level": 92,
+          "tags": ["Semantyczny HTML", "Flexbox", "Grid", "Animacje"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-js",
+          "name": "JavaScript",
+          "icon": "Terminal",
+          "span": "medium",
+          "shortDesc": "Główny Język",
+          "longDesc": "Mój główny język do budowania interaktywnych aplikacji webowych. Używam nowoczesnych funkcji ES6+ do pisania czystej, wydajnej logiki zarówno po stronie frontendu, jak i backendu w ekosystemie Next.js.",
+          "level": 80,
+          "tags": ["ES6+", "Async/Await", "Manipulacja DOM"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-sql",
+          "name": "SQL (MySQL)",
+          "icon": "Database",
+          "span": "medium",
+          "shortDesc": "Dane i Backend",
+          "longDesc": "Doświadczenie w projektowaniu relacyjnych schematów bazodanowych i pisaniu zapytań SQL z MySQL. Stosowany w backendach projektów do przechowywania i zarządzania danymi aplikacji.",
+          "level": 70,
+          "tags": ["Relacyjne bazy", "Zapytania SQL"],
+          "usedIn": [
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "lang-py",
+          "name": "Python",
+          "icon": "Terminal",
+          "span": "band",
+          "shortDesc": "Skryptowanie i Automatyzacja",
+          "longDesc": "Używany do skryptowania, przetwarzania danych i logiki backendowej. Znajomość podstawowych koncepcji Pythona i jego zastosowania w zadaniach webowych oraz automatyzacji.",
+          "level": 60,
+          "tags": ["Skryptowanie", "Automatyzacja", "Przetwarzanie Danych"],
+          "usedIn": []
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill-next",
+          "name": "Next.js",
+          "icon": "Blocks",
+          "span": "tall",
+          "shortDesc": "Framework Full-Stack",
+          "longDesc": "Mój główny framework do budowania nowoczesnych aplikacji webowych. Używam Next.js do renderowania po stronie serwera, generowania statycznego, tras API i budowania rozwiązań Full-Stack z jednej bazy kodu.",
+          "level": 78,
+          "tags": ["App Router", "SSR", "Trasy API", "Vercel"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-tail",
+          "name": "TailwindCSS & shadcn/ui",
+          "icon": "Blocks",
+          "span": "wide",
+          "shortDesc": "Nowoczesny Styling",
+          "longDesc": "Tworzenie idealnie odwzorowanych, responsywnych interfejsów przy użyciu klas narzędziowych TailwindCSS w połączeniu z dostępną biblioteką komponentów shadcn/ui i Radix UI.",
+          "level": 88,
+          "tags": ["Utility-First", "Radix UI", "Responsywność"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-db",
+          "name": "Supabase i MySQL",
+          "icon": "Database",
+          "span": "small",
+          "shortDesc": "Backend i Bazy Danych",
+          "longDesc": "Używam Supabase jako nowoczesnego, skalowalnego backend-as-a-service do autoryzacji, danych w czasie rzeczywistym i przechowywania plików, obok MySQL w projektach wymagających relacyjnych baz danych.",
+          "level": 68,
+          "tags": ["BaaS", "REST API"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        },
+        {
+          "id": "skill-ai",
+          "name": "Development Wspomagany AI",
+          "icon": "Wrench",
+          "span": "small",
+          "shortDesc": "Nowoczesny Workflow",
+          "longDesc": "Biegłość w wykorzystaniu narzędzi AI, takich jak Cursor i Claude Code, do znaczącego przyspieszenia developmentu, egzekwowania dobrych praktyk i rozwiązywania złożonych problemów architektonicznych.",
+          "level": 85,
+          "tags": ["Cursor", "Claude Code", "Prompt Engineering"],
+          "usedIn": [
+            { "name": "Malinowe Zdrowie", "href": "https://malinowezdrowie.vercel.app/" },
+            { "name": "Szybkie Jedzenie v2", "href": "https://szybkiejedzeniev33.vercel.app/" }
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "sectionLabel": "Kontakt",
+      "title": "Do współpracy",
+      "intro": "Świeży absolwent. Dyplomowany technik informatyk. Samodzielnie projektuję, buduję i wdrażam aplikacje w Next.js — szukam pierwszej roli junior frontend / full-stack.",
+      "badge": "Gotowy do pracy",
+      "lookingForLabel": "Szukam",
+      "lookingFor": "Junior Frontend / Full-Stack",
+      "locationLabel": "Lokalizacja",
+      "location": "Wadowice, Polska · praca zdalna mile widziana",
+      "replyLabel": "Odpowiedź",
+      "replyValue": "24h",
+      "replyHint": "Czytam każdą wiadomość.",
+      "detailsLabel": "Dane",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefon",
+      "githubLabel": "GitHub",
+      "cta": "Napisz do mnie"
+    }
+  }
+}
