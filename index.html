@@ -2,12 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portf</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Karol Malina — Junior Frontend Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Karol Malina — certified IT technician and junior frontend / full-stack developer from Wadowice, Poland. Next.js, TailwindCSS, Supabase."
+    />
+    <meta name="theme-color" content="#e2e2df" />
+
+    <!-- Open Graph: replace og:url / og:image with absolute URLs after deploying to a custom domain -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Karol Malina — Junior Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Certified IT technician building full-stack apps with Next.js, TailwindCSS and Supabase. Open to junior frontend / full-stack roles."
+    />
+    <meta property="og:image" content="/mal.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts: loaded here (not via CSS @import) so they are not dropped from the production bundle -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,500;1,9..40,500&display=swap"
+    />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Sync <html lang> with the saved language before React mounts
+      try {
+        var saved = localStorage.getItem("portfolio_lang");
+        if (saved === "pl" || saved === "en") {
+          document.documentElement.lang = saved;
+        }
+      } catch (e) {}
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
